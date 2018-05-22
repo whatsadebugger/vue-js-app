@@ -1,16 +1,19 @@
 <template>
   <div id="app">
     <todo-list :todos="todos"/>
+    <create-todo @create-todo="addTodo($event)"/>
   </div>
 </template>
 
 <script>
 import TodoList from './components/TodoList';
+import CreateTodo from './components/CreateTodo';
 
 export default {
   name: 'App',
   components: {
     TodoList,
+    CreateTodo,
   },
   data() {
     return {
@@ -32,6 +35,16 @@ export default {
         done: false,
       }],
     };
+  },
+  methods: {
+    addTodo(todo) {
+      debugger;
+      this.todos.push({
+        title: todo.title,
+        project: todo.project,
+        done: todo.done,
+      });
+    },
   },
 };
 </script>
