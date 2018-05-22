@@ -9,7 +9,10 @@
       </div>
       <div class='extra content'>
         <span class='right floated edit icon' v-on:click="showForm">
-          <i class='edit icon'></i>
+          <i class='edit icon'/>
+        </span>
+        <span class="right floated trash icon" @click="deleteTodo(todo)">
+          <i class="trash icon"/>
         </span>
       </div>
     </div>
@@ -53,6 +56,9 @@ export default {
     },
     hideForm() {
       this.isEditing = false;
+    },
+    deleteTodo(todo) {
+      this.$emit('delete-todo', todo);
     },
   },
 };
