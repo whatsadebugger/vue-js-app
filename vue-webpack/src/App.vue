@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <app-message></app-message>
+    <button-counter></button-counter>
   </div>
 </template>
 
