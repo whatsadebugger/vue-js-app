@@ -14,7 +14,8 @@
   <div id="app" @mousemove="updateCoordinates">
     <button @click="increase(2, $event)">Click me</button>
     <p>{{ counter }}</p>
-    <p>Coordinates: {{ x }} / {{ y }}</p>
+    <p @mousemove.stop="">Coordinates: {{ x }} / {{ y }}</p>
+    <input type="text" @keyup.enter="alertMe">
   </div>
 
 </body>
@@ -34,6 +35,9 @@
         this.x = event.clientX;
         this.y = event.clientY;
       },
+      alertMe: function() {
+        alert('enter pressed');
+      }
     }
   })
 </script>
