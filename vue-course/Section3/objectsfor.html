@@ -12,12 +12,11 @@
 <body>
   <div id="app">
     <ul>
-      <li v-for="(ingredient, i) in ingredients">{{ ingredient }} ({{ i }})</li>
+      <li v-for="p in persons">
+        <div v-for="(value, key,index) in p">{{ key }}:{{ value }} (index: {{ index }})</div>
+      </li>
     </ul>
-    <template v-for="(ingredient, i) in ingredients">
-      <h1>{{ ingredient }}</h1>
-      <p> {{ i }}</p>
-    </template>
+    <span v-for="n in 10">{{ n }}</span> 
   </div>
  
 </body>
