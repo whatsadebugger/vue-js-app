@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="https://npmcdn.com/vue/dist/vue.js"></script>
+</head>
+
+<body>
+  
+  <div id="app1">
+    <template v-for="(ingredient, i) in ingredients">
+      <h1>{{ ingredient }}</h1>
+      <p> {{ i }}</p>
+    </template>
+  </div>
+  <div id="app2">
+    <template v-for="(ingredient, i) in ingredients">
+      <h1>{{ ingredient }}</h1>
+      <p> {{ i }}</p>
+    </template>
+  </div>
+ 
+</body>
+<script>
+  new Vue({
+    el: "#app1",
+    data: {
+      ingredients: ['meat', 'fruit', 'cookies'],
+      persons: [
+      {name: 'Max', age: 27, color: 'red'},
+      {name: 'Anna', age: 'unknown', color: 'blue'},
+      ]
+    },
+  })
+  new Vue({
+    el: "#app2",
+    data: {
+      ingredients: ['meat', 'fruit', 'cookies'],
+      persons: [
+      {name: 'Max', age: 27, color: 'red'},
+      {name: 'Anna', age: 'unknown', color: 'blue'},
+      ]
+    },
+  })
+</script>
+
+</html>
