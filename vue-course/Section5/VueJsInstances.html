@@ -20,12 +20,16 @@
       <h1 ref="heading">{{ title }}</h1>
       <button v-on:click="onChange">Show Paragraph</button>
       <p v-if="showParagraph">This is not always visible</p>
+      <hello></hello>
   </div>
+  <div id="app3">
+
+  </div>
+  
  
 </body>
 <script>
 var vm1 = new Vue({
-  el: '#app1',
   data: {
     title: 'The VueJS Instance',
     showParagraph: false
@@ -50,6 +54,8 @@ var vm1 = new Vue({
     }
   }
 });
+vm1.$mount('#app1');
+
 var vm2 = new Vue({
   el: '#app2',
   data: {
@@ -79,6 +85,12 @@ var vm2 = new Vue({
     }
   }
 });
+var vm3 = new Vue({
+  template: '<h1>Hello!</h1>'
+})
+
+// vm3.$mount('#app3')
+// vm3.$mount() then  document.getElementById('app3').appendChild(vm3.$el) mount manually
 </script>
 
 </html>
