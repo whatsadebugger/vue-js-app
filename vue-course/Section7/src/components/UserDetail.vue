@@ -8,10 +8,15 @@
 
 <script>
 export default {
-    props: ['myName'],
+    props: {
+        myName: {
+            type: String,
+            default: 'Bobby'
+        }
+    },
     methods: {
         switchName() {
-            this.myName.split("").reverse().join("")
+            return this.myName.split("").reverse().join("");
         }
     }
 }

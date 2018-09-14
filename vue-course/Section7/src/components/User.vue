@@ -27,12 +27,12 @@
         },
         methods: {
             changeName() {
-                this.name = 'Damha'
+                this.name = 'emaNehTdegnahC'
             }
         },
         components: {
-            appUserDetail: UserDetail,
-            appUserEdit: UserEdit
+            "app-user-detail": UserDetail,
+            "app-user-edit": UserEdit
         }
     }
 </script>
