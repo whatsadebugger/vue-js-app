@@ -17,7 +17,7 @@
                     {id: 3, status: 'Degraded'},
                     {id: 4, status: 'Normal'}
                 ]
-            }
+            };
         },
         components: {
             appServer: Server

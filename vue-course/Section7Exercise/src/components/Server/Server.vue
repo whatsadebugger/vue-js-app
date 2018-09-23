@@ -5,15 +5,17 @@
 </template>
 
 <script>
-import { serverBus } from '../../main.js'
-export default {
-    props: ['server'],
-    methods: {
-      serverSelected() {
-        serverBus.$emit('serverSelected', this.server)
-      }
+    import { serverBus } from '../../main'
+
+    export default {
+        props: ['server'],
+        methods: {
+            serverSelected() {
+                console.log("is this shit working")
+                serverBus.$emit('serverSelected', this.server)
+            }
+        }
     }
-}
 </script>
 
 <style>
