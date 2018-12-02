@@ -7,7 +7,10 @@
           <hr>
           <div class="form-group">
             <label for="email">Mail</label>
-            <input type="text" id="email" class="form-control" v-model="userData.email">
+            <input type="text" id="email" class="form-control" 
+              :value="userData.email"
+              @input="userData.email = $event.target.value">
+              <!-- V-model is the same as using :value and @input -->
           </div>
           <div class="form-group">
             <label for="password">Password</label>
@@ -68,6 +71,11 @@
       <hr>
       <div class="row">
         <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+          <app-switch v-model="dataSwitch"></app-switch>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
           <button class="btn btn-primary">Submit!</button>
         </div>
       </div>
@@ -92,7 +100,7 @@
             </ul>
             <p>Gender: {{ userData.gender }}</p>
             <p>Priority: {{ selectedPriority }}</p>
-            <p>Switched:</p>
+            <p>Switched: {{ dataSwitch }}</p>
           </div>
         </div>
       </div>
@@ -101,20 +109,26 @@
 </template>
 
 <script>
+import Switch from './Switch.vue';
 export default {
   data() {
     return {
       userData: {
         email: "",
         password: "",
-        age: 24,
+        age: 25,
         message: "Some message",
         sendMail: [],
         gender: "Male"
       },
       selectedPriority: 'High',
-      priorities: ["High", "Medium", "Low"]
+      priorities: ["High", "Medium", "Low"],
+      dataSwitch: true,
+
     };
+  },
+  components: {
+    appSwitch: Switch
   }
 };
 </script>
