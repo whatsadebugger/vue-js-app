@@ -21,4 +21,6 @@ export const routes = [
     default: Home,
     'header-top': Header,
   }},
+  { path: '/redirect-me', redirect: { name: 'Home'}},
+  { path: '*', redirect: '/'} // catch all route
 ]
