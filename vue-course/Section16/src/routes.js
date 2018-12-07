@@ -1,11 +1,17 @@
-import User from './components/user/User.vue'
 import Home from './components/Home.vue'
-
 import Header from './components/Header.vue'
 
 import UserStart from './components/user/UserStart.vue'
 import UserDetail from './components/user/UserDetail.vue'
 import UserEdit from './components/user/UserEdit.vue'
+
+// Lazy loading for webpack
+// Can combine all the lazy loaded things into groups using the third paramter
+const User = resolve => {
+  require.ensure(['./components/user/User.vue'], () => {
+    resolve(require('./components/user/User.vue'));
+  }, 'user')
+}
 
 export const routes = [
   { path: '/user', components: {
