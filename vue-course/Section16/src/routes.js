@@ -10,11 +10,16 @@ import UserEdit from './components/user/UserEdit.vue'
 export const routes = [
   { path: '/user', components: {
     default: User,
-    'header-bottom': Header
+    'header-top': Header
 
   }, children: [
     { path: '', component: UserStart },
-    { path: ':id', component: UserDetail },
+    // before enter allows you to add logic before entering a component.
+    // this allows you see allow or not allow a user to enter a page
+    { path: ':id', component: UserDetail, beforeEnter: (to,from,next) => {
+      console.log('inside route setup');
+      next();
+    }},
     { path: ':id/edit', component: UserEdit, name: 'userEdit'}
   ]},
   { path: '', name: 'Home', components: {
