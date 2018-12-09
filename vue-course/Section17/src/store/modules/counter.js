@@ -1,26 +1,26 @@
 const state = {
-  counter: 0,
+  count: 0,
 };
 
 
 const getters = {
-  counter: state => {
-    return state.counter;
+  count: state => {
+    return state.count;
   },
-  counterDoubled: state => {
-    return state.counter * 2;
+  countDoubled: state => {
+    return state.count * 2;
   },
-  counterString: state => {
-    return state.counter + ' Clicks'
+  countString: state => {
+    return state.count + ' Clicks'
   }
 };
 
 const mutations = {
   increment: (state, payload) => {
-    state.counter += payload;
+    state.count += payload;
   },
   decrement: state => {
-    state.counter--;
+    state.count--;
   },
 };
 
