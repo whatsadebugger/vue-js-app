@@ -13,7 +13,7 @@
             type="number"
             class="form-control"
             placeholder="Quantity"
-            v-model="quantity"
+            v-model.number="quantity"
             >
         </div>
         <div class="pull-right">
@@ -44,6 +44,7 @@ export default {
         quantity: this.quantity
       };
       console.log(order);
+      this.$store.dispatch('buyStock', order);
       this.quantity = 0;
     }
   }
