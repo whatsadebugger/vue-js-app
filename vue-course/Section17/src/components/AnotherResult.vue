@@ -12,7 +12,7 @@ import { mapGetters } from "vuex";
 export default {
   computed: {
     counter() {
-      return this.$store.state.counter;
+      return this.$store.getters.counter;
     },
     doubledCounter() {
       return this.$store.getters.counterDoubled;
