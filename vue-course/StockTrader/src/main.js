@@ -9,6 +9,10 @@ import store from './store/store'
 
 Vue.use(VueRouter)
 
+Vue.filter('dollar', value => {
+  return '$' + value.toLocaleString();
+});
+
 const router = new VueRouter({
   mode: 'history',
   routes,
