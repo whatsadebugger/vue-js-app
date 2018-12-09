@@ -3,7 +3,6 @@
   <p>Counter is: {{ counter }}</p>
   <p>Counter Doubled is: {{ doubledCounter }}</p>
   <p>Counter Doubled with mapGetter is: {{ counterDoubled }}</p>
-
 </div>
 </template>
 
@@ -18,7 +17,7 @@ export default {
       return this.$store.getters.counterDoubled;
     },
     ...mapGetters([
-      'counterDoubled',
+      'counterDoubled'
     ])
   }
 };
