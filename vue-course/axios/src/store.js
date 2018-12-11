@@ -47,6 +47,12 @@ export default new Vuex.Store({
             token: res.data.idToken,
             userid: res.data.localId
           });
+          const now = new Date();
+          const expirationDate = new Date(now.getTime() + res.data.expiresIn * 1000);
+          localStorage.setItem('token', res.data.idToken);
+          localStorage.setItem('userId', res.data.localId);
+          localStorage.setItem('expirationDate', expirationDate);
+
           dispatch('storeUser', authData);
           dispatch('setLogoutTimer', res.data.expiresIn);
         })
@@ -88,14 +94,40 @@ export default new Vuex.Store({
             token: res.data.idToken,
             userId: res.data.localId
           })
+          const now = new Date();
+          const expirationDate = new Date(now.getTime() + res.data.expiresIn * 1000);
+          localStorage.setItem('token', res.data.idToken);
+          localStorage.setItem('userId', res.data.localId);
+          localStorage.setItem('expirationDate', expirationDate);
+
           dispatch('setLogoutTimer', res.data.expiresIn);
         })
         .catch(err => console.log(err));
+    },
+    tryAutoLogin({commit}) {
+      const token = localStorage.getItem('token');
+      if (!token) {
+        return;
+      }
+      const expirationDate = localStorage.getItem('expirationDate');
+
+      const now = new Date();
+      if (now >= expirationDate) {
+        return;
+      }
+      const userId = localStorage.getItem('userId');
+      commit('authUser', {
+        token: token,
+        userId: userId
+      });
     },
     logout({commit}) {
       // clear auth and kick user back to home page
       commit('clearAuth');
       router.replace('/');
+      localStorage.removeItem('token');
+      localStorage.removeItem('userId');
+      localStorage.removeItem('expirationDate');
     }
   },
   getters: {
