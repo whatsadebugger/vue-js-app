@@ -9,6 +9,14 @@ axios.defaults.baseURL = 'https://vueclass-8171b.firebaseio.com'
 axios.defaults.headers.common['Authorization'] = 'Token'
 axios.defaults.headers.get['Accepts'] = 'application/json'
 
+let reqInterceptor = axios.interceptors.request.use(config => {
+  return config;
+})
+
+let resInterceptor = axios.interceptors.response.use(res => {
+  return res;
+})
+
 new Vue({
   el: '#app',
   router,
