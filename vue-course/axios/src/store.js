@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from './axios-auth'
 import gAxios from 'axios'
+import router from './router';
 
 Vue.use(Vuex)
 
@@ -22,6 +23,10 @@ export default new Vuex.Store({
     },
     storeUser(state, user) {
       state.user = user;
+    },
+    clearAuth(state) {
+      state.idToken = null;
+      state.userId = null;
     }
   },
   actions: {
@@ -79,13 +84,19 @@ export default new Vuex.Store({
           })
         })
         .catch(err => console.log(err));
+    },
+    logout({commit}) {
+      // clear auth and kick user back to home page
+      commit('clearAuth');
+      router.replace('/');
     }
-
   },
   getters: {
     user(state) {
       return state.user;
+    },
+    isAuthenticated(state) {
+      return state.idToken !== null
     }
-
   }
 })
