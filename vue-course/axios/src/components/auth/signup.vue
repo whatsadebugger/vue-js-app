@@ -8,7 +8,7 @@
                   type="email"
                   id="email"
                   @blur="$v.email.$touch()"
-                  v-model="email">
+                  v-model.lazy="email">
         </div>
         <div class="input" :class="{invalid: $v.age.$error}">
           <label for="age">Your Age</label>
@@ -73,7 +73,7 @@
           <label for="terms">Accept Terms of Use</label>
         </div>
         <div class="submit">
-          <button type="submit">Submit</button>
+          <button type="submit" :disabled="$v.$invalid">Submit</button>
         </div>
       </form>
     </div>
@@ -82,6 +82,8 @@
 
 <script>
   import {required, numeric, minValue, minLength, sameAs, email} from 'vuelidate/lib/validators'
+  import axios from 'axios'
+
   export default {
     data () {
       return {
@@ -98,6 +100,14 @@
       email: {
         required,
         email,
+        unique: value => {
+          if (value === '') return true
+          return axios.get('users.json?orderBy="email"&equalTo="' + value + '"')
+                  .then(res => {
+                    console.log(res)
+                    return Object.keys(res.data).length === 0
+                  })
+        }
       },
       age: {
         required,
